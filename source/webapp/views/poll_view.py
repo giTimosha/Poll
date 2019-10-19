@@ -11,7 +11,7 @@ class IndexView(ListView):
     model = Poll
     template_name = 'poll/index.html'
     ordering = ['-created_at']
-    paginate_by = 3
+    paginate_by = 5
     paginate_orphans = 1
 
 
