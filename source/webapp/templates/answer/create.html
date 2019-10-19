@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Answer{% endblock %}
+
+{% block content %}
+    <h1>Добавление варианта ответа!</h1>
+    <form method="POST" action="">
+        {% include 'partial/answer_form.html' with button_text="Create" %}
+    </form>
+{% endblock %}

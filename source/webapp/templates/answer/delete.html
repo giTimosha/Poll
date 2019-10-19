@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete{% endblock %}
+
+{% block content %}
+    <h1>ты серьезно хочешь удалить "{{ answer }}"?</h1>
+    <form method="POST" action="{% url "delete_answer" answer.pk %}">
+        {% include 'partial/answer_form.html' with button_text="Delete" %}
+    </form>
+{% endblock %}

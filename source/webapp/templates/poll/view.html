@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block menu %}
+<a class="navbar-brand" href="{% url 'create_answer' poll.pk%}" methods="POST" id="add_choice">Add</a>
 <a class="navbar-brand" href="{% url 'update_view' poll.pk%}">Update</a>
     <a class="navbar-brand" href="{% url 'delete_view' poll.pk%}">Delete</a>
 {% endblock %}
@@ -11,11 +12,19 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-text">{{ poll.questions }}</h3>
-                        {% for ansver in poll.Poll.all %}
-                        <p class="card-text"> {{ ansver }}</p>
+
+                        {% for answer in poll.Poll.all %}
+                        <p class="card-text"> {{ answer }}</p>
+                            <a href="{% url 'update_answer' answer.pk %}">Update</a>
+                            <a href="{% url 'delete_answer' answer.pk %}">Delete</a>
+                            <hr>
                         {% endfor %}
+
                     </div>
                 </div>
             </div>
     </div>
+{#    <form action="{% url 'create_answer' poll.pk %}" method="POST" id="add_choice">#}
+{#        {% include 'partial/form.html' with button_text='Add' %}#}
+      </form>
 {% endblock %}
