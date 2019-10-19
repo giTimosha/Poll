@@ -1,5 +1,7 @@
-from django.views.generic import ListView, DetailView
+from django.urls import reverse
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from webapp.form import PollForm
 from webapp.models import Poll
 # from django.core.paginator import Paginator
 
@@ -18,3 +20,30 @@ class PollView(DetailView):
     context_key = 'polls'
     model = Poll
 
+
+class PollCreateView(CreateView):
+    template_name = 'poll/create.html'
+    model = Poll
+    form_class = PollForm
+
+    def get_success_url(self):
+        return reverse('poll_view', kwargs={'pk': self.object.pk})
+
+
+class PollUpdateView(UpdateView):
+    model = Poll
+    template_name = 'poll/update.html'
+    context_object_name = 'poll'
+    form_class = PollForm
+
+    def get_success_url(self):
+        return reverse('poll_view', kwargs={'pk': self.object.pk})
+
+
+class PollDeleteView(DeleteView):
+    model = Poll
+    context_object_name = 'poll'
+    template_name = 'poll/delete.html'
+
+    def get_success_url(self):
+        return reverse('index')
