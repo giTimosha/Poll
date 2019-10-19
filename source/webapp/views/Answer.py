@@ -18,5 +18,5 @@ class PollAnswerView(View):
         pk = request.POST['answer']
         answer = get_object_or_404(Choice, pk=pk)
         poll = get_object_or_404(Poll, pk=kwargs['pk'])
-        Answer.objects.create(answer=answer, poll=poll)
+        Answer.objects.create(pos_answer=answer, poll=poll)
         return redirect('index')
