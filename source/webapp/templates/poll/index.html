@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block menu %}
 <a class="navbar-brand" href="{% url 'create_view' %}">Add Poll+</a>
-{#    <a class="navbar-brand" href="{% url 'update_view' %}">Types</a>#}
 {#   <a class="navbar-brand" href="{% url 'status_view' %}">Statuses</a>#}
 {#   <a class="navbar-brand" href="{% url 'project_list' %}">Projects</a>#}
 {#    <li>{% include 'partial/search.html' %}</li>#}
@@ -19,6 +18,7 @@
                         <h3 class="card-text"><a href="{% url 'poll_view' poll.pk %}">{{ poll.questions }}</a>
                         </h3>
                         <p class="card-text">дата: {{ poll.created_at }}</p>
+                            <a class="navbar-brand" href="{% url 'answer_poll' poll.pk %}">All Answers</a>
 {#                        <p class="card-text">варианты: {{ task.type }}</p>#}
 {#                        <p class="card-text">data: {{ task.date }}</p>#}
                     </div>
